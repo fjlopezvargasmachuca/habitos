@@ -1,107 +1,222 @@
-# 📱 Hábitos Saludables – App Android (DAM)
+📱 Hábitos Saludables – Android Habit Tracker
 
-Aplicación Android desarrollada como proyecto final del ciclo **Desarrollo de Aplicaciones Multiplataforma (DAM)**.  
-Permite gestionar hábitos saludables, calendario, foro comunitario y exportación de datos en PDF.
+Aplicación Android desarrollada como proyecto final del ciclo Desarrollo de Aplicaciones Multiplataforma (DAM).
+La aplicación permite gestionar hábitos saludables, realizar seguimiento diario mediante calendario, interactuar con otros usuarios en un foro comunitario y utilizar gamificación mediante sistema de puntos y ranking.
 
----
+El objetivo del proyecto es demostrar el desarrollo de una aplicación Android moderna aplicando arquitectura MVVM, persistencia de datos local y diseño de interfaces con Jetpack Compose.
 
-## 🚀 Funcionalidades principales
+🚀 Funcionalidades principales
+👤 Sistema de autenticación
 
-### 👤 Autenticación
-- Registro y login de usuarios
-- Roles: USER, ADMIN, SUPERADMIN
-- Gestión de perfil de usuario
+La aplicación permite diferentes formas de acceso y control de usuarios.
 
-### 🌱 Hábitos saludables
-- Generación de hábitos aleatorios
-- Guardado y listado de hábitos
-- Clasificación por categorías
-- Exportación de hábitos a PDF
+Registro de usuarios mediante email y contraseña
 
-### 📆 Calendario
-- Visualización de hábitos por día
-- Seguimiento del progreso diario
-- Asociación de hábitos a fechas
+Inicio de sesión mediante Google Sign-In
 
-### 💬 Foro comunitario
-- Temas del foro (crear, editar, fijar, eliminar)
-- Hilos dentro de cada tema
-- Mensajes en cada hilo
-- Moderación según rol de usuario
+Gestión de perfil de usuario
 
-### 📄 Exportación PDF
-- Generación de PDF con lista de hábitos
-- Compartir PDF desde la aplicación
+Sistema de roles y permisos
 
----
+Roles disponibles:
 
-## 🧱 Arquitectura del proyecto
+Usuario invitado
 
-El proyecto sigue una arquitectura **MVVM + Repository**.
+Usuario registrado
+
+Administrador
+
+Superadministrador
+
+Cada rol dispone de distintos niveles de acceso dentro de la aplicación.
+
+🌱 Gestión de hábitos saludables
+
+La funcionalidad principal de la aplicación consiste en ayudar al usuario a crear y mantener hábitos saludables.
+
+Características:
+
+Generación automática de hábitos aleatorios
+
+Creación y almacenamiento de hábitos personalizados
+
+Organización de hábitos por categorías
+
+Consulta de hábitos guardados
+
+Exportación de hábitos a documentos PDF
+
+Las categorías disponibles incluyen:
+
+Salud física
+
+Bienestar mental
+
+Nutrición
+
+Productividad
+
+Descanso
+
+📆 Calendario de hábitos
+
+El calendario permite realizar un seguimiento diario del progreso del usuario.
+
+Funciones disponibles:
+
+Visualización de hábitos asociados a cada día
+
+Registro del estado del hábito (pendiente, realizado o fallido)
+
+Seguimiento del progreso personal
+
+Control de hábitos realizados a lo largo del tiempo
+
+Este sistema se integra con un sistema de gamificación, donde el usuario obtiene o pierde puntos según el cumplimiento de sus hábitos.
+
+🏆 Sistema de gamificación
+
+La aplicación incorpora un sistema de motivación basado en puntos.
+
+Características:
+
+Ganancia de puntos al completar hábitos
+
+Pérdida de puntos si los hábitos no se cumplen
+
+Ranking global de usuarios
+
+Visualización de posición en la clasificación
+
+Este sistema busca fomentar la constancia y el compromiso del usuario con sus objetivos.
+
+💬 Foro comunitario
+
+La aplicación incluye un foro donde los usuarios pueden compartir experiencias relacionadas con hábitos saludables.
+
+Funcionalidades:
+
+Creación de temas de discusión
+
+Creación de hilos dentro de cada tema
+
+Publicación de mensajes
+
+Sistema de likes en mensajes
+
+Moderación de contenidos según el rol del usuario
+
+Funciones administrativas:
+
+Creación, edición y eliminación de temas
+
+Moderación de hilos
+
+Baneo y desbaneo de usuarios
+
+📄 Exportación de datos
+
+Los usuarios pueden exportar su información de hábitos para utilizarla fuera de la aplicación.
+
+Funciones disponibles:
+
+Generación de PDF con hábitos seleccionados
+
+Compartir el documento generado desde el dispositivo
+
+🧱 Arquitectura del proyecto
+
+La aplicación sigue el patrón MVVM (Model–View–ViewModel) junto con el patrón Repository, lo que permite separar correctamente la lógica de negocio, la interfaz y el acceso a datos.
+
+Estructura principal del proyecto:
 
 com.example.habitos
-	 data
-		dao # DAOs de Room
-		entities # Entidades de base de datos
-		repository # Repositorios
-		database # HabitDatabase
-		utils # Utilidades (PDF, converters, etc.)
 
-	ui
-		screens # Pantallas Compose
-		viewmodel # ViewModels
-		theme # Tema Material 3
-		navigation # Navegación
+data
+ ├── dao            # Acceso a base de datos Room
+ ├── entities       # Entidades del modelo de datos
+ ├── repository     # Capa de acceso a datos
+ ├── database       # Configuración de Room
+ └── utils          # Utilidades (PDF, generadores, helpers)
 
-	MainActivity.kt
+ui
+ ├── screens        # Pantallas desarrolladas con Jetpack Compose
+ ├── viewmodel      # ViewModels de la arquitectura MVVM
+ ├── theme          # Tema y estilos Material 3
+ └── navigation     # Sistema de navegación entre pantallas
 
----
+MainActivity.kt
 
-## 🛠️ Tecnologías usadas
+Esta estructura permite:
 
-- **Kotlin**
-- **Jetpack Compose**
-- **Room Database**
-- **StateFlow**
-- **Material 3**
-- **iText PDF**
-- **MVVM**
-- **Android SDK**
+Separación de responsabilidades
 
----
+Código más mantenible
 
-## 🔐 Roles y permisos
+Mayor facilidad para ampliar funcionalidades en el futuro.
 
-| Rol          | Permisos |
-|--------------|----------|
-| USER         | Crear hábitos, escribir mensajes |
-| ADMIN        | Moderar foro |
-| SUPERADMIN   | Gestión completa (temas, hilos, usuarios) |
+🛠️ Tecnologías utilizadas
 
----
+El proyecto ha sido desarrollado utilizando tecnologías modernas del ecosistema Android.
 
-## 📦 Instalación
+Kotlin
 
-1. Clonar el repositorio
-2. Abrir con Android Studio
-3. Ejecutar en emulador o dispositivo físico
-4. Mínimo SDK: **24**
+Jetpack Compose
 
----
+Room Database
 
-## 🎓 Proyecto DAM
+StateFlow
 
-Este proyecto demuestra:
-- Uso de arquitectura limpia
-- Persistencia de datos local
-- Gestión de estados
-- Navegación avanzada
-- Buenas prácticas en Android moderno
+Material Design 3
 
----
+MVVM Architecture
 
-## 👨‍💻 Autor
+Google Sign-In
 
-Proyecto desarrollado por **Francisco Javier López Vargas-Machuca**  
-Ciclo: **Desarrollo de Aplicaciones Multiplataforma (DAM)**  
-Año: **2026**
+PDF Generation (iText)
+
+Android Navigation
+
+📦 Instalación
+
+Para ejecutar el proyecto:
+
+Clonar el repositorio
+
+git clone https://github.com/fjlopezvargasmachuca/habitos.git
+
+Abrir el proyecto en Android Studio
+
+Sincronizar las dependencias de Gradle
+
+Ejecutar la aplicación en:
+
+Emulador Android
+
+Dispositivo físico
+
+Requisitos mínimos:
+
+Android 7.0 (API 24) o superior
+
+🎓 Proyecto DAM
+
+Este proyecto ha sido desarrollado como Proyecto Final del ciclo de Desarrollo de Aplicaciones Multiplataforma (DAM).
+
+El desarrollo del proyecto ha permitido aplicar conocimientos relacionados con:
+
+Arquitectura de aplicaciones Android
+
+Persistencia de datos
+
+Diseño de interfaces modernas
+
+Control de roles y permisos
+
+Desarrollo de funcionalidades complejas
+
+👨‍💻 Autor
+
+Francisco Javier López Vargas-Machuca
+Proyecto final – Desarrollo de Aplicaciones Multiplataforma (DAM)
+Año: 2026
