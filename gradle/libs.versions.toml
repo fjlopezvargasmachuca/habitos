@@ -1,0 +1,149 @@
+# -------------------------------------------------------------
+# CATÁLOGO DE VERSIONES DE DEPENDENCIAS (Version Catalog)
+# -------------------------------------------------------------
+#
+# Este archivo centraliza la gestión de versiones de librerías,
+# plugins y dependencias utilizadas en el proyecto Android.
+#
+# Utilizar un Version Catalog permite:
+#
+# - Mantener todas las versiones en un único lugar
+# - Facilitar la actualización de librerías
+# - Reducir duplicación de versiones en archivos Gradle
+# - Mejorar la mantenibilidad del proyecto
+#
+# Las dependencias declaradas aquí pueden utilizarse en los
+# archivos build.gradle.kts mediante la referencia "libs".
+#
+# Ejemplo:
+# implementation(libs.androidx.core.ktx)
+# -------------------------------------------------------------
+
+
+[versions]
+
+# ───────────── VERSIONES DE PLUGINS Y LIBRERÍAS ─────────────
+
+# Android Gradle Plugin
+agp = "8.13.1"
+
+# Kotlin
+kotlin = "2.0.21"
+
+# Kotlin Symbol Processing
+ksp = "2.0.21-1.0.25"
+
+# Librerías principales de AndroidX
+coreKtx = "1.17.0"
+lifecycleRuntimeKtx = "2.9.4"
+activityCompose = "1.11.0"
+
+# Jetpack Compose BOM (gestiona versiones internas de Compose)
+composeBom = "2024.09.00"
+
+# Dagger / Hilt
+dagger = "2.51.1"
+
+# Testing
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+
+# Firebase Authentication
+firebaseAuthCommon = "9.8.0"
+firebaseAuthKtx = "24.0.1"
+
+
+
+# -------------------------------------------------------------
+# LIBRERÍAS DISPONIBLES PARA EL PROYECTO
+# -------------------------------------------------------------
+#
+# Cada entrada define una dependencia que puede utilizarse
+# desde los archivos Gradle mediante la referencia "libs".
+#
+# Ejemplo de uso:
+# implementation(libs.androidx.core.ktx)
+# -------------------------------------------------------------
+
+[libraries]
+
+# ───────────── ANDROID CORE ─────────────
+
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+
+
+# ───────────── TESTING ─────────────
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+
+# ───────────── LIFECYCLE ─────────────
+
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+
+
+# ───────────── ACTIVITY COMPOSE ─────────────
+
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+
+# ───────────── JETPACK COMPOSE ─────────────
+
+# Bill of Materials (BOM) que controla las versiones
+# de las librerías de Compose utilizadas en el proyecto
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+
+# Componentes principales de Compose
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+
+# ───────────── FIREBASE AUTHENTICATION ─────────────
+
+firebase-auth-common = { group = "com.google.firebase", name = "firebase-auth-common", version.ref = "firebaseAuthCommon" }
+
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
+
+
+
+# -------------------------------------------------------------
+# PLUGINS UTILIZADOS EN EL PROYECTO
+# -------------------------------------------------------------
+#
+# Estos plugins pueden ser utilizados dentro del bloque
+# plugins {} de los archivos build.gradle.kts mediante
+# el alias definido aquí.
+#
+# Ejemplo:
+# alias(libs.plugins.android.application)
+# -------------------------------------------------------------
+
+[plugins]
+
+# Plugin principal para aplicaciones Android
+android-application = { id = "com.android.application", version.ref = "agp" }
+
+# Plugin de Kotlin para Android
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+# Plugin que habilita Jetpack Compose en Kotlin
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Kotlin Symbol Processing
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
